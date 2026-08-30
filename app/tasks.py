@@ -46,10 +46,3 @@ def editar_tarea(tareas, id_tarea, nuevo_titulo):
 
     return False
 
-
-def obtener_pendientes(tareas):
-    return [tarea for tarea in tareas if not tarea["completada"]]
-
-
-def obtener_completadas(tareas):
-    return [tarea for tarea in tareas if tarea["completada"]]
