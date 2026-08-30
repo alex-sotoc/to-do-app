@@ -1,71 +1,5 @@
 from datetime import datetime
 
-def agregar_tarea(tareas, titulo):
-    if titulo.strip() == "":
-        return False
-
-    tarea = {
-        "id": len(tareas) + 1,
-        "titulo": titulo.strip(),
-        "completada": False
-    }
-
-    tareas.append(tarea)
-
-    return True
-def agregar_tarea(tareas, titulo):
-    if titulo.strip() == "":
-        return False
-
-    tarea = {
-        "id": len(tareas) + 1,
-        "titulo": titulo.strip(),
-        "completada": False
-    }
-
-    tareas.append(tarea)
-
-    return True
-
-
-def completar_tarea(tareas, id_tarea):
-    for tarea in tareas:
-        if tarea["id"] == id_tarea:
-            tarea["completada"] = True
-            return True
-
-    return False
-def agregar_tarea(tareas, titulo):
-    if titulo.strip() == "":
-        return False
-
-    tarea = {
-        "id": len(tareas) + 1,
-        "titulo": titulo.strip(),
-        "completada": False
-    }
-
-    tareas.append(tarea)
-
-    return True
-
-
-def completar_tarea(tareas, id_tarea):
-    for tarea in tareas:
-        if tarea["id"] == id_tarea:
-            tarea["completada"] = True
-            return True
-
-    return False
-
-
-def eliminar_tarea(tareas, id_tarea):
-    for tarea in tareas:
-        if tarea["id"] == id_tarea:
-            tareas.remove(tarea)
-            return True
-
-    return False
 
 def agregar_tarea(tareas, titulo):
     if titulo.strip() == "":
@@ -74,7 +8,8 @@ def agregar_tarea(tareas, titulo):
     tarea = {
         "id": len(tareas) + 1,
         "titulo": titulo.strip(),
-        "completada": False
+        "completada": False,
+        "fecha_creacion": datetime.now().strftime("%d/%m/%Y %H:%M")
     }
 
     tareas.append(tarea)
@@ -110,3 +45,11 @@ def editar_tarea(tareas, id_tarea, nuevo_titulo):
             return True
 
     return False
+
+
+def obtener_pendientes(tareas):
+    return [tarea for tarea in tareas if not tarea["completada"]]
+
+
+def obtener_completadas(tareas):
+    return [tarea for tarea in tareas if tarea["completada"]]
